@@ -1,24 +1,23 @@
-name: Build and Deploy SAM Application in glgapp
+name: Add File
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  build-deploy-glgapp-use1:
+  add_file:
     runs-on: ubuntu-latest
-    strategy: 
-      matrix:
-        project: [sample]
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup the Repository
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Add file
         run: |
-          echo "# test-actions" >> README.md
+          echo "Your file content" > README.md
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git add README.md
-          git commit -m "Adding the README file"
-          git push -u origin main
+          git commit -m "Add new file via GitHub Actions"
+          git push origin main
