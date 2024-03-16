@@ -1,1 +1,10 @@
-Your file content
+Your file content:
+gh api \
+  -X PUT \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  repos/glg/multiple-lambdas-in-one-repo-deployed-with-sam.tml/topics \
+  -f "names[]=sam-monorepo" -f "names[]=sam"
+
+
+gh api repos/glg-satish-tripathi/test-actions/actions/workflows
