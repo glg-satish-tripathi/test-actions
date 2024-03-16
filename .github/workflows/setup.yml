@@ -1,22 +1,24 @@
-# name: Build and Deploy SAM Application in glgapp
+name: Build and Deploy SAM Application in glgapp
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-# jobs:
-#   build-deploy-glgapp-use1:
-#     runs-on: ubuntu-latest
-#     strategy: 
-#       matrix:
-#         project: [sample]
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Setup the Repository
-#         env:
-#           PROJECT_NAME: ${{ matrix.project }}
-#         run: |
-#           echo "# test-actions" >> README.md
-
+jobs:
+  build-deploy-glgapp-use1:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        project: [sample]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup the Repository
+        env:
+          PROJECT_NAME: ${{ matrix.project }}
+        run: |
+          echo "# test-actions" >> README.md
+          git add README.md
+          git commit -m "Adding the README file"
+          git push -u origin main
