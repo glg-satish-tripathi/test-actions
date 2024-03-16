@@ -1,4 +1,4 @@
-name: Inatial Setup
+name: setting-up-the-sam-repository
 permissions:
   contents: write
 on:
@@ -63,3 +63,9 @@ jobs:
               "allow_deletions": false
             }
           EOF
+      - name: Adding branch protection rule.
+        env:
+          # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
+          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+        run: |
+          gh workflow disable setting-up-the-sam-repository
