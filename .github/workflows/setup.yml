@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup the Repository
         env:
-          PROJECT_NAME: ${{ matrix.project }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "# test-actions" >> README.md
           git config --global user.email "testme@gmail.com"
