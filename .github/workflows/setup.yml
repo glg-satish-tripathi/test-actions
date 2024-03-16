@@ -24,6 +24,8 @@ jobs:
           git commit -m "Add new file via GitHub Actions"
           git push origin main
       - name: Adding topic to the repository.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api \
             -X PUT \
