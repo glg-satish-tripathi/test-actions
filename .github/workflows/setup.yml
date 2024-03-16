@@ -39,8 +39,7 @@ jobs:
                 "sam"
               ]
             }
-          EOF \
-          > /dev/null
+          EOF
       - name: Adding branch protection rule.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
@@ -63,8 +62,7 @@ jobs:
               "allow_force_pushes": false,
               "allow_deletions": false
             }
-          EOF \
-          > /dev/null
+          EOF 
       - name: Disabling the Workflow!
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
