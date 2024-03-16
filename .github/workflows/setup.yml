@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Adding README to the repository.
-        run: |
-          echo ${{ github.repository }} > README.md
-          git config --global user.email "no-reply@github.com"
-          git config --global user.name "GitHub Actions"
-          git add README.md
-          git commit -m "Add new file via GitHub Actions"
-          git push origin main
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Adding README to the repository.
+      #   run: |
+      #     echo ${{ github.repository }} > README.md
+      #     git config --global user.email "no-reply@github.com"
+      #     git config --global user.name "GitHub Actions"
+      #     git add README.md
+      #     git commit -m "Add new file via GitHub Actions"
+      #     git push origin main
       - name: Adding topic to the repository.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
