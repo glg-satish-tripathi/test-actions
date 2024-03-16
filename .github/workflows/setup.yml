@@ -19,8 +19,6 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
           echo "# test-actions" >> README.md
-          git config --global user.email "testme@gmail.com"
-          git config --global user.name "Test Me"
           git add README.md
           git commit -m "Adding the README file"
           git push -u origin main
