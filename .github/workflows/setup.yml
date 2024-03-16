@@ -1,5 +1,6 @@
 name: Inatial Setup
-permissions: write-all
+permissions: 
+  contents: write
 on:
   push:
     branches:
@@ -10,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Adding README to the repository.
@@ -23,7 +24,7 @@ jobs:
       #     git push origin main
       - name: Adding topic to the repository.
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           gh api \
             -X PUT \
