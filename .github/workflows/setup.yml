@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Adding README to the repository.
-      #   run: |
-      #     echo ${{ github.repository }} > README.md
-      #     git config --global user.email "no-reply@github.com"
-      #     git config --global user.name "GitHub Actions"
-      #     git add README.md
-      #     git commit -m "Add new file via GitHub Actions"
-      #     git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Adding README to the repository.
+        run: |
+          echo ${{ github.repository }} > README.md
+          git config --global user.email "no-reply@github.com"
+          git config --global user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Add new file via GitHub Actions"
+          git push origin main
       - name: Adding topic to the repository.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
@@ -40,26 +40,26 @@ jobs:
               ]
             }
           EOF
-      # - name: Adding topic to the repository.
-      #   env:
-      #     # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
-      #     GH_TOKEN: ${{ secrets.MY_TOKEN }}
-      #   run: |
-      #     gh api repos/glg-satish-tripathi/test-actions/branches/main/protection \
-      #       -X PUT \
-      #       -H "Accept: application/vnd.github.luke-cage-preview+json" \
-      #       --input - << EOF
-      #     {
-      #       "enforce_admins": true,
-      #       "required_status_checks": null,
-      #       "required_pull_request_reviews": {
-      #       "require_code_owner_reviews": true,
-      #       "required_approving_review_count": 1,
-      #       "require_pull_request_before_merge": true
-      #       },
-      #       "restrictions": null,
-      #       "required_linear_history": true,
-      #       "allow_force_pushes": false,
-      #       "allow_deletions": false
-      #     }
-      #     EOF
+      - name: Adding topic to the repository.
+        env:
+          # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
+          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+        run: |
+          gh api repos/glg-satish-tripathi/test-actions/branches/main/protection \
+            -X PUT \
+            -H "Accept: application/vnd.github.luke-cage-preview+json" \
+            --input - << EOF
+            {
+              "enforce_admins": true,
+              "required_status_checks": null,
+              "required_pull_request_reviews": {
+                "require_code_owner_reviews": true,
+                "required_approving_review_count": 1,
+                "require_pull_request_before_merge": true
+                },
+              "restrictions": null,
+              "required_linear_history": true,
+              "allow_force_pushes": false,
+              "allow_deletions": false
+            }
+          EOF
