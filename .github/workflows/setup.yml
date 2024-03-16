@@ -16,7 +16,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Adding README to the repository.
         run: |
-          echo `${{ github.repository }}` > README.md
+          touch README.md
           git config --global user.email "no-reply@github.com"
           git config --global user.name "GitHub Actions"
           git add README.md
