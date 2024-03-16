@@ -17,10 +17,9 @@ jobs:
 
       - name: Add file
         run: |
-          echo "Your file content" > new_file.txt
+          echo "Your file content" > README.md
           git config --global user.email "no-reply@github.com"
           git config --global user.name "GitHub Actions"
-          git add new_file.txt
+          git add README.md
           git commit -m "Add new file via GitHub Actions"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push origin main
