@@ -43,7 +43,7 @@ jobs:
       - name: Adding branch protection rule.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api repos/glg-satish-tripathi/test-actions/branches/main/protection \
             -X PUT \
@@ -66,6 +66,6 @@ jobs:
       - name: Disabling the Workflow
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow disable setting-up-the-sam-repository
