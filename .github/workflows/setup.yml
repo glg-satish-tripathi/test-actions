@@ -1,6 +1,4 @@
 name: setting-up-the-sam-repository
-permissions:
-  contents: write
 on:
   push:
     branches:
@@ -9,6 +7,8 @@ on:
 jobs:
   inatial-setup:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
       - name: Adding topic to the repository.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api \
             -X PUT \
@@ -43,7 +43,7 @@ jobs:
       - name: Adding branch protection rule.
         env:
           # https://stackoverflow.com/questions/71356217/how-to-add-a-topic-to-a-github-repo-using-a-github-action
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api repos/glg-satish-tripathi/test-actions/branches/main/protection \
             -X PUT \
